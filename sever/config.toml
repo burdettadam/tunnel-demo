@@ -1,0 +1,28 @@
+[server]
+bind_addr = "0.0.0.0:2333"
+default_token = "example_default_token"
+
+[server.services]
+  [server.services.tunnel1]
+  bind_addr = "0.0.0.0:6001"
+  token = "example_token"
+
+  [server.services.tunnel2]
+  bind_addr = "0.0.0.0:6002"
+  token = "example_token"
+
+  [server.services.tunnel3]
+  bind_addr = "0.0.0.0:6003"
+  token = "example_token"
+
+  [server.services.tunnel4]
+  bind_addr = "0.0.0.0:6004"
+  token = "example_token"
+
+  [server.services.tunnel5]
+  bind_addr = "0.0.0.0:6005"
+  token = "example_token"
+
+  [server.services.tunnel6]
+  bind_addr = "0.0.0.0:6006"
+  token = "example_token"

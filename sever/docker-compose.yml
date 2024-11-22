@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: always
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_SQLITE_FILE: "/data/database.sqlite"
+    volumes:
+      - ./nginx-proxy-manager/data:/data
+      - ./nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    platform: linux/amd64
+
+  rathole:
+    image: 'rapiz1/rathole:latest'
+    container_name: rathole
+    restart: always
+    ports:
+      - '2333:2333' # Rathole server port
+      - '6001-6006:6001-6006' # Rathole tunnel ports
+    volumes:
+      - ./config.toml:/etc/rathole/config/config.toml
+    command: ["/etc/rathole/config/config.toml"]
+    platform: linux/amd64
